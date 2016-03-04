@@ -26,5 +26,13 @@
         ));
     });
 
+    $app->post("/stores", function() use ($app) {
+        $new_store = new Store($_POST['store_name'], $_POST['store_phone']);
+        $new_store->save();
+        return $app['twig']->render('stores.html.twig', array(
+            'stores' => Store::getAll()
+        ));
+    });
+
     return $app;
 ?>
