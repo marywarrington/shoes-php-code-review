@@ -54,6 +54,14 @@
         ));
     });
 
+    $app->delete("/{id}/delete_store", function($id) use ($app) {
+        $store = Store::findById($id);
+        $store->deleteOneStore();
+        return $app['twig']->render('stores.html.twig', array(
+            'stores' => Store::getAll()
+        ));
+    });
+    
     $app->get("/brands", function() use ($app) {
         return $app['twig']->render('brands.html.twig', array(
             'brands' => Brand::getAll()
