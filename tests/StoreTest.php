@@ -64,7 +64,7 @@
             $test_store->save();
 
             $store_name2 = "Nordstrom";
-            $store_phone2 = "Jimmy Choo";
+            $store_phone2 = "123-4455";
             $test_store2 = new Store($store_name2, $store_phone2, $id);
             $test_store2->save();
 
@@ -106,7 +106,7 @@
             $test_store->save();
 
             $store_name2 = "Nordstrom";
-            $store_phone2 = "Jimmy Choo";
+            $store_phone2 = "123-4455";
             $test_store2 = new Store($store_name2, $store_phone2, $id);
             $test_store2->save();
 
@@ -127,7 +127,7 @@
             $test_store->save();
 
             $store_name2 = "Nordstrom";
-            $store_phone2 = "Jimmy Choo";
+            $store_phone2 = "123-4455";
             $test_store2 = new Store($store_name2, $store_phone2, $id);
             $test_store2->save();
 
@@ -145,7 +145,7 @@
             $test_store->save();
 
             $store_name2 = "Nordstrom";
-            $store_phone2 = "Jimmy Choo";
+            $store_phone2 = "123-4455";
             $test_store2 = new Store($store_name2, $store_phone2, $id);
             $test_store2->save();
 
