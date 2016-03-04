@@ -5,15 +5,16 @@
     </head>
     <body>
         <h2>Brand Name: {{ brand.getBrandName }}</h2>
-
-        {% if brand_stores is not empty %}
-            <ul>
-            {% for brand_store in brand_stores %}
-                <li><a href="/stores/{{ brand_store.getId }}">{{ brand_store.getStoreName}}</a></li>
-            {% endfor %}
-        {% else %}
-            <p>This brand is not carried in any stores!</p>
-        {% endif %}
+        <h3>Carried in these stores:</h3>
+        <ul>
+            {% if brand_stores is not empty %}
+                {% for brand_store in brand_stores %}
+                    <li><a href="/stores/{{ brand_store.getId }}">{{ brand_store.getStoreName}}</a></li>
+                {% endfor %}
+            {% else %}
+                <p>This brand is not carried in any stores!</p>
+            {% endif %}
+        </ul>
 <br>
         <form action="/{{ brand.getId }}/add_store" method="post">
             <input type="hidden" name="brand_name" value="{{ brand.getId }}">

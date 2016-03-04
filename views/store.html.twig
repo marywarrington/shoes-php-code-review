@@ -16,9 +16,9 @@
                 <h3>No brands yet!</h3>
             {% endif %}
         </ul>
-        <form action="{{ store.getId }}/add_brand" method="post">
+        <form action="/{{ store.getId }}/add_brand" method="post">
             <input type="hidden" name="store_name" value="{{ store.getId }}">
-            <label>Select a brand</label>
+            <label>Add a brand</label>
             <select name="brand_id" type="text">
                 {% for brand in brands %}
                     <option value="{{ brand.getId }}"> {{ brand.getBrandName }} </option>
@@ -27,6 +27,7 @@
             <button type="submit">Add Brand</button>
         </form>
 
+<br>
         <form action='/{{ store.getId }}/delete_store' method='post'>
             <input name="_method" type="hidden" value="delete">
             <button type='submit'>Delete Store</button>
