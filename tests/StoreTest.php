@@ -6,7 +6,7 @@
     */
 
     require_once __DIR__ . '/../src/Store.php';
-    // require_once __DIR__ . '/../src/Brand.php';
+    require_once __DIR__ . '/../src/Brand.php';
 
     $server = 'mysql:host=localhost;dbname=shoes_test';
     $usercourse_name = 'root';
@@ -18,6 +18,7 @@
         protected function tearDown()
         {
             Store::deleteAll();
+            Brand::deleteAll();
         }
 
         function test_getInfo()
@@ -152,6 +153,45 @@
             $result = Store::findByName($test_store->getStoreName());
 
             $this->assertEquals($test_store, $result);
+        }
+
+        function test_addBrand()
+        {
+            $store_name = "Foot Locker";
+            $id = null;
+            $store_phone = "503-111-2222";
+            $test_store = new Store($store_name, $store_phone, $id);
+            $test_store->save();
+
+            $brand_name = "Nike";
+            $test_brand = new Brand($brand_name, $id);
+            $test_brand->save();
+
+            $test_store->addBrand($test_brand);
+
+            $this->assertEquals($test_store->getBrands(), [$test_brand]);
+        }
+
+        function test_getBrands()
+        {
+            $store_name = "Foot Locker";
+            $id = null;
+            $store_phone = "503-111-2222";
+            $test_store = new Store($store_name, $store_phone, $id);
+            $test_store->save();
+
+            $name = "Nike";
+            $test_brand = new Brand($name, $id);
+            $test_brand->save();
+
+            $name2 = "Adidas";
+            $test_brand2 = new Brand($name2, $id);
+            $test_brand2->save();
+
+            $test_store->addBrand($test_brand);
+            $test_store->addBrand($test_brand2);
+
+            $this->assertEquals($test_store->getBrands(), [$test_brand, $test_brand2]);
         }
 
     }
