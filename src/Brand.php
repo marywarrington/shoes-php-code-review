@@ -37,7 +37,7 @@
             $this->setBrandName($new_name);
         }
 
-        static function find($search_id)
+        static function findById($search_id)
         {
             $found_brand = null;
             $brands = Brand::getAll();
@@ -49,7 +49,20 @@
             }
             return $found_brand;
         }
-        
+
+        static function findByName($search_name)
+        {
+            $found_brand = null;
+            $brands = Brand::getAll();
+            foreach($brands as $brand) {
+                if ($brand->getBrandName() == $search_name)
+                {
+                    $found_brand = $brand;
+                }
+            }
+            return $found_brand;
+        }
+
         static function getAll()
         {
             $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");

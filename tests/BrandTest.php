@@ -98,7 +98,26 @@
             $test_brand2->save();
 
             // Act
-            $result = Brand::find($test_brand->getId());
+            $result = Brand::findById($test_brand->getId());
+
+            // Assert
+            $this->assertEquals($test_brand, $result);
+        }
+
+        function test_findByName()
+        {
+            // Arrange
+            $name = "Nike";
+            $id = null;
+            $test_brand = new Brand($name, $id);
+            $test_brand->save();
+
+            $name2 = "Adidas";
+            $test_brand2 = new Brand($name2, $id);
+            $test_brand2->save();
+
+            // Act
+            $result = Brand::findByName($test_brand->getBrandName());
 
             // Assert
             $this->assertEquals($test_brand, $result);
