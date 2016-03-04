@@ -2,7 +2,7 @@
 
 #### _A simple template, 2.12.2016_
 
-### By _**Joseph Karasek**_
+### By _**Mary Warrington**_
 
 ## Description
 
@@ -45,4 +45,4 @@ _This web application was created using the_  [Silex micro-framework](http://sil
 
 MIT License.
 
-Copyright (c) 2016 **_Joseph Karasek_**
+Copyright (c) 2016 **_Mary Warrington_**
