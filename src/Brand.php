@@ -31,6 +31,12 @@
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+        function update($new_name)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO brands SET brand_name = '{$new_name}';");
+            $this->setBrandName($new_name);
+        }
+
         static function getAll()
         {
             $returned_brands = $GLOBALS['DB']->query("SELECT * FROM brands;");
