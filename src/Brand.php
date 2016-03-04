@@ -43,6 +43,30 @@
         //add delete from join table here
         }
 
+        function addStore($store)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores_brands (store_id, brand_id) VALUES ({$store->getId()}, {$this->getId()});");
+        }
+
+        function getStores()
+        {
+            $returned_stores = $GLOBALS['DB']->query("SELECT stores.* FROM brands
+                JOIN stores_brands ON (brands.id = stores_brands.brand_id)
+                JOIN stores ON (stores_brands.store_id = stores.id)
+                WHERE brands.id = {$this->getId()};");
+
+            $stores = [];
+            foreach($returned_stores as $store) {
+
+                $store_name = $store['store_name'];
+                $store_phone = $store['store_phone'];
+                $id = $store['id'];
+                $new_store = new Store($store_name, $store_phone, $id);
+                array_push($stores, $new_store);
+            }
+            return $stores;
+        }
+
         static function findById($search_id)
         {
             $found_brand = null;
