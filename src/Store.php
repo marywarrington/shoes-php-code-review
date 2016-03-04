@@ -45,7 +45,7 @@
 
         function update($new_store_name, $new_store_phone)
         {
-            $GLOBALS['DB']->exec("INSERT INTO stores SET store_name = '{$new_store_name}', store_phone = '{$new_store_phone}';");
+            $GLOBALS['DB']->exec("UPDATE stores SET store_name = '{$new_store_name}', store_phone = '{$new_store_phone}' WHERE id = {$this->getId()};");
             $this->setStoreName($new_store_name);
             $this->setStorePhone($new_store_phone);
         }

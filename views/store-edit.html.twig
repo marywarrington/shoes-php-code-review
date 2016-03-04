@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include '/includes/head.html.twig' %}
+    </head>
+    <body>
+        <h2>Edit {{ store.getStoreName }}</h2>
+
+        <form action="/store/{{ store.getId }}/update" method="post">
+            <input type="hidden" name="_method" value="patch">
+            <label>Update Name</label>
+            <input name="store_name" type="text" value="{{store.getStoreName}}">
+            <label>Update Phone Number</label>
+            <input name="store_phone" type="text" value="{{store.getStorePhone}}">
+            <button type="submit">Submit</button>
+        </form>
+
+<br>
+        <form action='/{{ store.getId }}/delete_store' method='post'>
+            <input name="_method" type="hidden" value="delete">
+            <button type='submit'>Delete Store</button>
+        </form>
+        <a href="/">Home</a>
+    </body>
+</html>
