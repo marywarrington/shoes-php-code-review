@@ -37,6 +37,12 @@
             $this->setBrandName($new_name);
         }
 
+        function deleteOneBrand()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
+        //add delete from join table here
+        }
+
         static function findById($search_id)
         {
             $found_brand = null;

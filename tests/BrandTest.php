@@ -123,6 +123,25 @@
             $this->assertEquals($test_brand, $result);
         }
 
+        function test_deleteOneBrand()
+        {
+            // Arrange
+            $name = "Nike";
+            $id = null;
+            $test_brand = new Brand($name, $id);
+            $test_brand->save();
+
+            $name2 = "Adidas";
+            $test_brand2 = new Brand($name2, $id);
+            $test_brand2->save();
+
+            // Act
+            $test_brand->deleteOneBrand();
+            $result = Brand::getAll();
+
+            // Assert
+            $this->assertEquals([$test_brand2], $result);
+        }
 
     }
 
