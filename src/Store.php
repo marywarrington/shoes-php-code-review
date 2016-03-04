@@ -27,6 +27,11 @@
             return $this->store_phone;
         }
 
+        function setStorePhone($new_store_phone)
+        {
+            $this->store_phone = $new_store_phone;
+        }
+
         function getId()
         {
             return $this->id;
@@ -36,6 +41,13 @@
         {
             $GLOBALS['DB']->exec("INSERT INTO stores (store_name, store_phone) VALUES ('{$this->getStoreName()}', '{$this->getStorePhone()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
+        }
+
+        function update($new_store_name, $new_store_phone)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO stores SET store_name = '{$new_store_name}', store_phone = '{$new_store_phone}';");
+            $this->setStoreName($new_store_name);
+            $this->setStorePhone($new_store_phone);
         }
 
         static function getAll()

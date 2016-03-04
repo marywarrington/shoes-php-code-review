@@ -74,5 +74,27 @@
             $this->assertEquals([$test_store, $test_store2], $result);
         }
 
+        function test_update()
+        {
+            // Arrange
+            $store_name = "Foot Locker";
+            $id = null;
+            $store_phone = "503-111-2222";
+            $test_store = new Store($store_name, $store_phone, $id);
+            $test_store->save();
+
+            $new_store_name = "Nordstrom";
+            $new_store_phone = "503-222-3333";
+
+            // Act
+            $test_store->update($new_store_name, $new_store_phone);
+            $result = $test_store->getStoreName();
+            $result2 = $test_store->getStorePhone();
+
+            // Assert
+            $this->assertEquals($new_store_name, $result);
+            $this->assertEquals($new_store_phone, $result2);
+        }
+
     }
  ?>
