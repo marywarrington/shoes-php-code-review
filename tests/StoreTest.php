@@ -136,5 +136,23 @@
             $this->assertEquals($test_store, $result);
         }
 
+        function test_findByName()
+        {
+            $store_name = "Foot Locker";
+            $id = null;
+            $store_phone = "503-111-2222";
+            $test_store = new Store($store_name, $store_phone, $id);
+            $test_store->save();
+
+            $store_name2 = "Nordstrom";
+            $store_phone2 = "Jimmy Choo";
+            $test_store2 = new Store($store_name2, $store_phone2, $id);
+            $test_store2->save();
+
+            $result = Store::findByName($test_store->getStoreName());
+
+            $this->assertEquals($test_store, $result);
+        }
+
     }
  ?>

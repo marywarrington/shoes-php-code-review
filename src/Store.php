@@ -75,10 +75,24 @@
         {
             $found_store = null;
             $stores = Store::getAll();
-            
+
             foreach($stores as $store) {
                 $store_id = $store->getId();
                 if ($store_id == $search_id) {
+                    $found_store = $store;
+                }
+            }
+            return $found_store;
+        }
+
+        static function findByName($search_name)
+        {
+            $found_store = null;
+            $stores = Store::getAll();
+
+            foreach($stores as $store) {
+                $store_name = $store->getStoreName();
+                if ($store_name == $search_name) {
                     $found_store = $store;
                 }
             }
