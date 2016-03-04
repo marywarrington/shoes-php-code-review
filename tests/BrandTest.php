@@ -5,7 +5,6 @@
     * @backupStaticAttributes disabled
     */
 
-
     require_once __DIR__ . '/../src/Brand.php';
 
     $server = 'mysql:host=localhost;dbname=shoes_test';
@@ -28,12 +27,46 @@
 
             $test_brand = new Brand($name, $id);
             // Act
-            $result1 = $test_brand->getName();
+            $result1 = $test_brand->getBrandName();
             $result2 = $test_brand->getId();
             // Assert
             $this->assertEquals($name, $result1);
             $this->assertEquals($id, $result2);
         }
+
+        function test_save()
+        {
+            // Arrange
+            $name = "Nike";
+            $id = null;
+            $test_brand = new Brand($name, $id);
+
+            // Act
+            $test_brand->save();
+            $result = Brand::getAll();
+            // Assert
+            $this->assertEquals($test_brand, $result[0]);
+        }
+
+        function test_getAll()
+        {
+            // Arrange
+            $name = "Nike";
+            $id = null;
+            $test_brand = new Brand($name, $id);
+            $test_brand->save();
+
+            $name2 = "Adidas";
+            $test_brand2 = new Brand($name2, $id);
+            $test_brand2->save();
+
+            // Act
+            $result = Brand::getAll();
+
+            // Assert
+            $this->assertEquals([$test_brand, $test_brand2], $result);
+        }
+
 
     }
 
