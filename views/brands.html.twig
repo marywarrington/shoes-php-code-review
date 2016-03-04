@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include '/includes/head.html.twig' %}
+    </head>
+    <body>
+        {% if brands is not empty %}
+        <p>Here are the brands</p>
+            {% for brand in brands %}
+                <h4><a href="/brands/{{ brand.getId }}">{{ brand.getBrandName }}</a></h4>
+            {% endfor %}
+        {% else %}
+            <p>There are no brands yet!</p>
+        {% endif %}
+
+        <form action="/brands" method="post">
+            <label for="brand_name">Brand name: </label>
+            <input type="text" name="brand_name">
+            <button type="submit">Add brand</button>
+        </form>
+        <a href="/">Home</a>
+    </body>
+</html>

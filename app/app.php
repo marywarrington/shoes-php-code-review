@@ -43,5 +43,12 @@
         ));
     });
 
+    $app->get("/brands", function() use ($app) {
+        return $app['twig']->render('brands.html.twig', array(
+            'brands' => Brand::getAll()
+        ));
+    });
+
+
     return $app;
 ?>
