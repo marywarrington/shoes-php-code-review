@@ -50,6 +50,12 @@
             $this->setStorePhone($new_store_phone);
         }
 
+        function deleteOneStore()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM stores WHERE id = {$this->getId()};");
+//add delete from store_brand
+        }
+
         static function getAll()
         {
             $returned_stores = $GLOBALS['DB']->query("SELECT * FROM stores;");
