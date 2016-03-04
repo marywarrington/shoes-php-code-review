@@ -57,6 +57,15 @@
         ));
     });
 
+    $app->get("/brands/{id}", function($id) use ($app) {
+        $brand = Brand::findById($id);
+        return $app['twig']->render('brand.html.twig', array(
+            'brand' => $brand,
+            'brand_stores' => $brand->getStores(),
+            'stores' => Store::getAll()
+        ));
+    });
+
 
     return $app;
 ?>
