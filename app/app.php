@@ -20,6 +20,11 @@
         return $app['twig']->render('index.html.twig');
     });
 
+    $app->get("/stores", function() use ($app) {
+        return $app['twig']->render('stores.html.twig', array(
+        'stores' => Store::getAll()
+        ));
+    });
 
     return $app;
 ?>
