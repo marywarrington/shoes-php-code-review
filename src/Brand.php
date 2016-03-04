@@ -40,7 +40,7 @@
         function deleteOneBrand()
         {
             $GLOBALS['DB']->exec("DELETE FROM brands WHERE id = {$this->getId()};");
-        //add delete from join table here
+            $GLOBALS['DB']->exec("DELETE FROM store_brands WHERE brand_id = ${$this->getId()};");
         }
 
         function addStore($store)

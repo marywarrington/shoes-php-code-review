@@ -43,6 +43,17 @@
         ));
     });
 
+    // $app->post("{id}/add_brand", function($id) use ($app) {
+    //     $store = Store::findById($id);
+    //     $brand = Brand::findById($_POST['brand_id']);
+    //     $store->addBrand($brand);
+    //     return $app['twig']->render('store.html.twig', array(
+    //         'store' => $store,
+    //         'store_brands' => $store->getBrands(),
+    //         'brands' => Brand::getAll()
+    //     ));
+    // });
+
     $app->get("/brands", function() use ($app) {
         return $app['twig']->render('brands.html.twig', array(
             'brands' => Brand::getAll()
@@ -59,6 +70,17 @@
 
     $app->get("/brands/{id}", function($id) use ($app) {
         $brand = Brand::findById($id);
+        return $app['twig']->render('brand.html.twig', array(
+            'brand' => $brand,
+            'brand_stores' => $brand->getStores(),
+            'stores' => Store::getAll()
+        ));
+    });
+
+    $app->post("/{id}/add_store", function($id) use ($app) {
+        $brand = Brand::findById($id);
+        $store = Store::findById($_POST['id']);
+        $brand->addStore($store);
         return $app['twig']->render('brand.html.twig', array(
             'brand' => $brand,
             'brand_stores' => $brand->getStores(),
